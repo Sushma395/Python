@@ -1,4 +1,5 @@
 import random
+# made changes, after going through blackjack solutions in the Course.
 
 suits = ('Hearts', 'Diamonds', 'Spades', 'Clubs')
 ranks = ('Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King', 'Ace')
@@ -46,12 +47,14 @@ class Player:
         while self.bet > self.money:
             print('Bet higher than money!!')
             self.bet = int(input(f"Enter {self.name}'s bet:"))
-        else:
-            self.money -= self.bet
         return self.bet
 
-    def change_money(self, change):
-        self.money += (change * self.bet)
+    def win_round(self):
+        self.money += self.bet
+        return self.total_money()
+
+    def loose_round(self):
+        self.money -= self.bet
         return self.total_money()
 
     def add_card(self, new_card):
@@ -69,77 +72,71 @@ class Player:
             sum_cards += word.value
             if word.rank == 'Ace':
                 count_ace += 1
-
-        if sum_cards > 21 and count_ace > 0:
-            if sum_cards >= (count_ace*11+10):
-                sum_cards = sum_cards - (count_ace * 10)
-                print(f"{self.name} count of Ace: {count_ace}.Considered {count_ace} ace as 1 ")
-            elif (count_ace*11+10) > sum_cards:
-                sum_cards = sum_cards - ((count_ace-1)*10)
-                print(f"{self.name} count of Ace: {count_ace}.Considered {count_ace-1} ace as 1 ")
-            else:
-                pass
+        while sum_cards > 21 and count_ace > 0:
+            sum_cards -= 10
+            count_ace -= 1
         return sum_cards
 
 
 def player_check():
     if P1.cards_value() < 21:
-        P1.cards_value()
-        player_action()
-        dealer_check()
-    elif P1.cards_value() == 21:
-        print(f'-----{P1.name} Wins!!!!-----')
-        P1.change_money(change=1.5)
-        D1.change_money(change=-0.5)
-    else:
+        hit_stand()
+    elif P1.cards_value() > 21:
         print('------Bust------')
         print(f'-----{P1.name} Looses!!!-----')
-        P1.change_money(change=0)
-        D1.total_money()
-
-
-def player_action():
-    action = input(f"{P1.name} has sum < 21. Choose STAY or HIT? ").upper()
-    while action != 'HIT' and action != 'STAY':
-        action = input(f"ERROR!!! {P1.name} has sum < 21. Choose STAY or HIT? ").upper()
+        P1.loose_round()
+        D1.win_round()
     else:
-        if action == 'HIT':
-            P1.add_card(D.deal_card())
-            player_check()
-        if action == 'STAY':
-            print(f"Show {D1.name}'s hidden card: {D1.cards[-1]}")
-            D1.cards_value()
+        print(f'-----{P1.name} Wins!!!!-----')
+        P1.win_round()
+        D1.loose_round()
 
 
 def dealer_check():
     if D1.cards_value() == 21:
         print(f'-----{D1.name} Wins!!!!-----')
-        P1.total_money()
-        D1.total_money()
+        P1.loose_round()
+        D1.win_round()
     elif D1.cards_value() > 21:
         print(f'------BUST------')
         print(f'-----{D1.name} Looses!!!!-----')
-        P1.change_money(change=2)
-        D1.change_money(change=-1)
+        P1.win_round()
+        D1.loose_round()
     else:
-        if D1.cards_value() >= 17:
-            print(f"{D1.name}'s sum is {D1.cards_value()}: STAY")
+        if D1.cards_value() > 16:
+            print(f"{D1.name}'s sum is greater than 16")
             if P1.cards_value() < D1.cards_value():
-                print(f'-----{P1.name} Looses!!!!-----')
-                P1.total_money()
-                D1.total_money()
+                print(f'-----{D1.name} Wins!!!!-----')
+                P1.loose_round()
+                D1.win_round()
             elif P1.cards_value() > D1.cards_value():
-                print(f'-----{P1.name} Wins!!!!-----')
-                P1.change_money(change=2)
-                D1.change_money(change=-1)
+                print(f'-----{D1.name} Looses!!!!-----')
+                P1.win_round()
+                D1.loose_round()
             else:
                 print(f'-----TIE-----')
-                P1.change_money(change=1)
-                D1.change_money(change=-1)
+                P1.total_money()
+                D1.total_money()
         else:
             D1.add_card(D.deal_card())
             D1.total_money()
             dealer_check()
+
+
+def hit_stand():
+    while True:
+        action = input(f"{P1.name} has sum < 21. Choose STAND or HIT? ").upper()
+        if action != 'HIT' and action != 'STAND':
+            continue
+        else:
+            if action == 'HIT':
+                P1.add_card(D.deal_card())
+                player_check()
+            if action == 'STAND':
+                print(f"Show {D1.name}'s hidden card: {D1.cards[-1]}")
+                D1.cards_value()
+                dealer_check()
+            return False
 
 
 game_on = True
@@ -151,9 +148,7 @@ while game_on:
     P1.total_money()
     D1.total_money()
     P1.bet_money()
-    P1.total_money()
-    D1.money = P1.bet + D1.money
-    D1.total_money()
+    D1.bet = P1.bet
     P1.add_card(D.deal_card())
     P1.add_card(D.deal_card())
     D1.add_card(D.deal_card())
