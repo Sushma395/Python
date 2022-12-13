@@ -1,0 +1,37 @@
+Write a program in Python to execute the Bubble sort algorithm?
+Wed, Oct 26, 2022
+write a declarative Pipeline script to validate SSH with Private Key?
+Wed, Oct 26, 2022
+range(5)
+Wed, Oct 26, 2022
+range(0,5)
+Wed, Oct 26, 2022
+range(0,6,2)
+Wed, Oct 26, 2022
+0 2 4
+Wed, Oct 26, 2022
+Finding sum of digits of a number until sum becomes single digit.
+
+Given a number n, we need to find the sum of its digits such that:
+
+If n < 10 digSum(n) = n Else digSum(n) = Sum(digSum(n)) Examples :
+
+Input : 1234 Output : 1 Explanation : The sum of 1+2+3+4 = 10, digSum(x) == 10 Hence ans will be 1+0 = 1
+
+Input : 5674 Output : 4
+Wed, Oct 26, 2022
+Create a new list using lambda which has only prime numbers
+Wed, Oct 26, 2022
+2 mins
+Wed, Oct 26, 2022
+li = [2,3,5,7,8,9,11,13,17,20,24,29]
+Wed, Oct 26, 2022
+picling & unpickling in python
+mock service using unittest
+wait
+run tests in parallel or particular test in pytest
+automation pros & cons
+performance tetsing vs performance engineering
+defect life cycle
+pycharm?
+explain api working

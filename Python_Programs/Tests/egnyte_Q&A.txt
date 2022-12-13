@@ -1,0 +1,115 @@
+--Selenium
+??browser 
+driver.refresh()
+driver.quit()
+driver.forward()
+xpath:
+//tagname[@name='value']
+css:
+tagname[name='value']
+broken links
+
+double click
+
+@pytest.mark.parametrize
+{'login,password',('sushma,pass#123')
+
+@pytest.mark.skip
+
+def login_ui
+	login
+	yield
+	logout
+
+def test_1(loginui)
+
+pytest test.py -n 2
+
+PYTHON:
+--> get dict from 2 lists
+index = [1, 2, 3]
+languages = ['python', 'c', 'c++']
+
+d = {index[i]: languages[i] for i in range(len(index))}
+print(d)
+
+
+-->common elements in set
+s1 = {1,2,3,4,5,6}
+s2 = {5,6,7,8,9}
+
+#method
+print(s1.intersection(s2))
+
+common = []
+
+list comprehension
+[common.append(i) for i in s1 for j in s2 if i == j]
+
+for i in s1:
+    for j in s2:
+        if i == j:
+            common.append(i)
+
+print(s1.intersection(s2))
+
+print(common)
+
+--> print count of vowels in ip_str
+vowels = 'aeiou'
+ip_str = 'Hello, have you tried our tutorial section yet?'
+
+for vowel in vowels:
+    print(f'{vowel}: {ip_str.count(vowel)}')
+
+
+GIT:
+git commands
+
+
+UNIX:
+ps | grep ''
+find hidden files
+mkdir
+zip xyz.txt
+gunzip xyz.gz
+rm -rf
+
+--> Testing
+automation timelines
+api automation using python
+issue reproduction issue
+document manual vs automation 
+automation framework
+
+
+-->broken links in selenium
+
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import time
+import requests
+
+#specify where your chrome driver present in your pc
+PATH=r"C:\Users\educative\Documents\chromedriver\chromedriver.exe"
+
+#get instance of web driver
+driver = webdriver.Chrome(PATH)
+
+#provide website url here
+driver.get("http://demo.guru99.com/test/newtours/")
+
+#get all links
+all_links = driver.find_elements(By.CSS_SELECTOR,"a")
+
+#check each link if it is broken or not
+for link in all_links:
+    #extract url from href attribute
+    url = link.get_attribute('href')
+
+    #send request to the url and get the result
+    result = requests.head(url)
+
+    #if status code is not 200 then print the url (customize the if condition according to the need)
+    if result.status_code != 200:
+        print(url, result.status_code)
