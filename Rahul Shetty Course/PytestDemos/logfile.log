@@ -1,0 +1,12 @@
+2022-11-18 15:40:43,483 :INFO : PytestDemos.test_demo6 :Information statement
+2022-11-18 15:40:43,483 :WARNING : PytestDemos.test_demo6 :Warning message
+2022-11-18 15:40:43,484 :ERROR : PytestDemos.test_demo6 :Test got failed
+2022-11-18 15:40:43,484 :CRITICAL : PytestDemos.test_demo6 :Critical issue
+2022-11-23 16:40:46,745 :INFO : PytestDemos.test_demo6 :Information statement
+2022-11-23 16:40:46,745 :WARNING : PytestDemos.test_demo6 :Warning message
+2022-11-23 16:40:46,745 :ERROR : PytestDemos.test_demo6 :Test got failed
+2022-11-23 16:40:46,746 :CRITICAL : PytestDemos.test_demo6 :Critical issue
+2022-11-23 16:41:35,408 :INFO : PytestDemos.test_demo6 :Information statement
+2022-11-23 16:41:35,409 :WARNING : PytestDemos.test_demo6 :Warning message
+2022-11-23 16:41:35,409 :ERROR : PytestDemos.test_demo6 :Test got failed
+2022-11-23 16:41:35,409 :CRITICAL : PytestDemos.test_demo6 :Critical issue

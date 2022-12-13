@@ -1,0 +1,21 @@
+Selenium Python implementation from scratch
+
+1. Standards of writing selenium tests in framework
+
+Create separate packages for different needs
+
+2. Creating browser invocation fixtures in conftest.py
+
+create setup fixture, use request param
+need to tie up this instance to class instance
+use request.cls.driver
+
+@pytest.mark.usefixtures("setup") to call the fixture in test_e2e
+
+
+3. Setting up Base Class to hold all common Utilities
+
+create Utilities pa
+
+4. Inheriting Base Class to all tests to remove Fixture redundant code
+5.
