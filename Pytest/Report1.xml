@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="9" time="0.151" timestamp="2022-11-04T12:57:31.680822" hostname="WS-14470"><testcase classname="test_1" name="test_case1" time="0.001" /><testcase classname="test_1" name="test_case2" time="0.001" /><testcase classname="test_1" name="test_case3" time="0.001"><failure message="AssertionError: Titles doesn't match&#10;assert 'jenkins' in 'Jenkins is CI server'">def test_case3():
+        name = "jenkins"
+        title1 = "Jenkins is CI server"
+&gt;       assert name in title1 , "Titles doesn't match"  # if fails, prints on screen as AssertionError
+E       AssertionError: Titles doesn't match
+E       assert 'jenkins' in 'Jenkins is CI server'
+
+test_1.py:21: AssertionError</failure></testcase><testcase classname="test_2" name="test_login" time="0.001" /><testcase classname="test_2" name="test_checkout" time="0.001" /><testcase classname="test_2" name="test_logout" time="0.001" /><testcase classname="test_3.MyTestCase" name="test_something" time="0.001"><failure message="AssertionError: True != False">self = &lt;test_3.MyTestCase testMethod=test_something&gt;
+
+    def test_something(self):
+&gt;       self.assertEqual(True, False)  # add assertion here
+E       AssertionError: True != False
+
+test_3.py:6: AssertionError</failure></testcase><testcase classname="test_4" name="test_responsecode200" time="0.001" /><testcase classname="test_4" name="test_responsecode400" time="0.001" /></testsuite></testsuites>
